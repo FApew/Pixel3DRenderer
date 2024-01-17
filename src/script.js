@@ -27,6 +27,8 @@ let VtxPrj = []
 setInterval(() => {
   Obj[0].Rotation.y += .5
   Obj[1].Rotation.x += .5
+  Obj[0].Rotation.z += -.5
+  Obj[1].Rotation.z += -.5
   clear()
   render()
 }, 50 / 3)
