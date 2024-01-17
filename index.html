@@ -9,37 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
-    <div style="height: 0;" id="ObjOptions">
-        <div id="objOptions">
-            <div id="objInputs1">
-                <textarea id="Vtx" ></textarea>
-                <textarea id="Edg"></textarea>
-            </div>
-            <div id="objInputs2">
-                <div id="posInpt">
-                    <input type="text" id="">
-                    <input type="text" id="">
-                    <input type="text" id="">
-                </div>
-                <div id="rotInpt">
-                    <input type="text" id="">
-                    <input type="text" id="">
-                    <input type="text" id="">
-                </div>
-            </div>
-            <div id="Remove"></div>
-        </div>
-    </div>
-
 </head>
 <body>
     <div id="app">
         <div id="ObjBox">
             <div id="Obj">
-                <button id="bAddObj" onclick="addObj()">+</button>
+                <textarea id="objIn" cols="30" rows="10">{ Vertex: [], Edge: [], Position: [0, 0, 0], Rotation: [0, 0, 0], Frame: [] }</textarea>
             </div>
             <div id="options">
-                
+            
             </div>
         </div>
         <div id="screenBox">

@@ -1,5 +1,6 @@
 const Grid = document.getElementById("sGrid")
 const ObjsIn = document.getElementById("Obj")
+const In = document.getElementById("objIn")
 
 let objCount = 0
 
@@ -9,7 +10,7 @@ Grid.style.gridTemplateRows = `repeat(${gridSize}, ${100 / gridSize}%)`
 Grid.style.gridTemplateColumns = `repeat(${gridSize}, ${100 / gridSize}%)`
 
 const focal = 140
-let CubeVtx = [{ x: 25, y: -25, z: 25 }, { x: 25, y: -25, z: -25 }, { x: -25, y: -25, z: -25 }, { x: -25, y: -25, z: 25 }, { x: 25, y: 25, z: 25 }, { x: 25, y: 25, z: -25 }, { x: -25, y: 25, z: -25 }, { x: -25, y: 25, z: 25 }]
+/*let CubeVtx = [{ x: 25, y: -25, z: 25 }, { x: 25, y: -25, z: -25 }, { x: -25, y: -25, z: -25 }, { x: -25, y: -25, z: 25 }, { x: 25, y: 25, z: 25 }, { x: 25, y: 25, z: -25 }, { x: -25, y: 25, z: -25 }, { x: -25, y: 25, z: 25 }]
 
 let CubeEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 5], [2, 6], [3, 7], [4, 5], [5, 6], [6, 7], [7, 4]]
 
@@ -18,19 +19,33 @@ let PyrVtx = [{ x: 15, y: -25, z: 15 }, { x: 15, y: -25, z: -15 }, { x: -15, y: 
 let PyrEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 4], [2, 4], [3, 4], [5, 6], [6, 7], [7, 8], [8, 5], [5, 4], [6, 4], [7, 4], [8, 4]]
 
 let Cube = { Vtx: CubeVtx, Edg: CubeEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z: 0 } }
-let Pyramid = { Vtx: PyrVtx, Edg: PyrEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:90 } }
+let Pyramid = { Vtx: PyrVtx, Edg: PyrEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:90 } }*/
 
-let Obj = [Cube, Pyramid]
+let Obj = [/*Cube, Pyramid*/]
 
 let VtxPrj = []
 
 setInterval(() => {
-  Obj[0].Rotation.y += .5
-  Obj[1].Rotation.x += .5
-  Obj[0].Rotation.z += -.5
-  Obj[1].Rotation.z += -.5
-  clear()
-  render()
+    /*Obj[0].Rotation.y += .5
+    Obj[1].Rotation.x += .5
+    Obj[0].Rotation.z += -.5
+    Obj[1].Rotation.z += -.5*/
+    for (let i = 0; i < Obj.length; i++) {
+        for (let j = 0; j < Obj[i].Frame.length; j++) {
+            switch (Obj[i].Frame[j][0]) {
+                case "p": {
+                    Obj[i].Position[Obj[i].Frame[j][1]] += parseFloat(Obj[i].Frame[j].slice(3))
+                    break
+                }
+                case "r": {
+                    Obj[i].Rotation[Obj[i].Frame[j][1]] += parseFloat(Obj[i].Frame[j].slice(3))
+                    break
+                }
+            }
+        }
+    }
+    clear()
+    render()
 }, 50 / 3)
 
 for (let i = 0; i < gridSize; i++) {
@@ -41,7 +56,6 @@ for (let i = 0; i < gridSize; i++) {
     Grid.appendChild(GridDiv)
   }
 }
-document.getElementById(`${Math.floor(gridSize / 2)}_${Math.floor(gridSize / 2)}`).style.background = "red"
 
 function render() {
   VtxPrj = []
@@ -155,90 +169,33 @@ function DrawPixel(x, y, col) {
   }
 }
 
-function addObj() {
-  objCount++
-  var Elm = document.createElement("div")
-  Elm.className = "objOptions"
-  Elm.id = `${objCount}`
+In.addEventListener("change", getIn)
 
-  var in1 = document.createElement("div"), in2 = document.createElement("div"), rem = document.createElement("div")
-  in1.className = "objIn1"
-  in2.className = "objIn2"
-  rem.className = "remove"
-  rem.id = `rem_${objCount}`
-
-  var txt1 = document.createElement("textarea"), txt2 = document.createElement("textarea")
-  txt1.className = "txts"
-  txt2.className = "txts"
-  txt1.id = `Vtx_${objCount}`
-  txt2.id = `Edg_${objCount}`
-
-  in1.appendChild(txt1)
-  in1.appendChild(txt2)
-
-  var posIn = document.createElement("div"), rotIn = document.createElement("div")
-  posIn.className = "posIn"
-  rotIn.className = "rotIn"
-
-  for (coord in ["x", "y", "z"]) {
-    let txt = document.createElement("input")
-    txt.type = "number"
-    txt.className = "posInputBox"
-    txt.id = `pos_${coord}_${objCount}`
-    posIn.appendChild(txt)
-  }
-
-  var sldGrid = document.createElement("div")
-  sldGrid.className = "sldGrid"
-
-  for (coord in ["x", "y", "z"]) {
-    let sld = document.createElement("input")
-    sld.type = "range"
-    sld.min = "0"
-    sld.max = "360"
-    sld.className = "rotInputBox"
-    sld.id = `rot_${coord}_${objCount}`
-    rotIn.appendChild(sld)
-    let rotTxt = document.createElement("div")
-    rotTxt.className = "rotTxt"
-    rotTxt.id = `rotTxt_${coord}_${objCount}`
-    rotTxt.innerHTML = "0"
-    rotIn.appendChild(rotTxt)
-  }
-
-  in2.appendChild(posIn)
-  in2.appendChild(rotIn)
-
-  rem.innerHTML = "X"
-
-  Elm.appendChild(in1)
-  Elm.appendChild(in2)
-  Elm.appendChild(rem)
-
-  ObjsIn.innerHTML = Elm.outerHTML + ObjsIn.innerHTML
-
-  document.querySelectorAll(".remove").forEach((Elm) => {
-    Elm.addEventListener("click", (Elm1) => {
-      console.log(Elm1.target)
-      document.getElementById(`${Elm1.target.id.replace("rem_", "")}`).remove()
-    })
-  })
-
-  document.querySelectorAll(".objOptions").forEach((Elm) => {
-    Elm.querySelectorAll("div").forEach((Elm) => {
-      Elm.querySelectorAll("textarea").forEach((Elm) => {
-        Elm.addEventListener("change", getIn)
-      })
-      Elm.querySelectorAll("div").forEach((Elm) => {
-        Elm.querySelectorAll("input").forEach((Elm) => {
-          Elm.addEventListener("change", getIn)
-        })
-      })
-    })
-  })
-}
-
-//TODO Input Function
 function getIn() {
-
+    let ArrObjTemp = In.value.replaceAll(" ", "").split(";")
+    Obj = []
+    for (let i = 0; i < ArrObjTemp.length; i++) {
+        if (ArrObjTemp[i] != "") {
+            if (ArrObjTemp[i].toString()[0] == "{") {
+                let TempObj = eval("(" + ArrObjTemp[i] + ")")
+                let FinalObj = { Vtx: [], Edg: [], Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:0 }, Frame: []}
+                for (let j = 0; j < TempObj.Vertex.length; j++) {
+                    FinalObj.Vtx.push({x: TempObj.Vertex[j][0],y: TempObj.Vertex[j][1],z: TempObj.Vertex[j][2]})
+                }
+                for (let j = 0; j < TempObj.Edge.length; j++) {
+                    FinalObj.Edg.push(TempObj.Edge[j])
+                }
+                let tempCords = ['x', 'y', 'z']
+                for (let coord of tempCords) {
+                    FinalObj.Position[coord] = TempObj.Position[tempCords.indexOf(coord)]
+                    FinalObj.Rotation[coord] = TempObj.Rotation[tempCords.indexOf(coord)]
+                }
+                for (let j = 0; j < TempObj.Frame.length; j++) {
+                    FinalObj.Frame.push(TempObj.Frame[j])
+                }
+                Obj.push(FinalObj)
+            }
+        }
+    }
 }
+getIn()

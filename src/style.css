@@ -57,125 +57,20 @@ body {
     width: calc(100% - 4vw);
     height: calc(100% - 4vw);
     margin: 2vw;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(100, 27%);
+    display: flex;
     row-gap: 1vw;
-    overflow: auto;
 }
 
-.objOptions {
+#objIn {
     width: 100%;
     height: 100%;
-    border-radius: 20px;
-    background-color: #3d3d3d;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 85% 15%;
-}
-
-.objIn1 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.txts {
-    width: 80%;
-    height: 40%;
-    resize: none;
-    background-color: #272727;
     border: unset;
-    color: white;
-    font-family: 'Fira Code', monospace;
-    font-size: .8vw;
-}
-
-.txts:focus {
     outline: none;
-}
-
-.objIn2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    grid-row: 2 span;
-    margin: .3vw 0 .3vw 0;
-}
-
-.remove {
-    width: 70%;
-    height: 80%;
-    justify-self: center;
-    border-radius: 20px;
-    background-color: #6f6f6f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.posIn {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-}
-
-.rotIn {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: repeat(calc(100%/3));
-    grid-template-columns: 80% 20%;
-}
-
-.posInputBox {
-    width: 80%;
-    height: 25%;
+    background-color: #141414;
     resize: none;
-    background-color: #272727;
-    border: unset;
     color: white;
-    font-family: 'Fira Code', monospace;
-    font-size: .8vw;
-}
-
-.rotInputBox {
-    
-}
-
-.rotTxt {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    color: white;
-    font-family: 'Fira Code', monospace;
-}
-
-#bAddObj {
-    height: 5vw;
-    aspect-ratio: 1;
-    border-radius: 100%;
-    color: white;
-    background-color: #515151;
-    border: unset;
-    font-size: 2vw;
-    font-family: 'Fira Code', monospace;
-    justify-self: center;
-    z-index: 1;
-}
-
-#addObj:hover {
-    background-color: #6f6f6f;
+    font-family: "fira code" monospace;
+    font-size: 2.3vh;
 }
 
 #Obj::-webkit-scrollbar {
