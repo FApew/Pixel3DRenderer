@@ -42,8 +42,9 @@ for (let i = 0; i < gridSize; i++) {
 document.getElementById(`${Math.floor(gridSize/2)}_${Math.floor(gridSize/2)}`).style.background = "red"
 
 function render() {
+    VtxPrj=[]
     for (let i = 0; i < Obj.length; i++) {
-        VtxPrj=[[],[]]
+        VtxPrj.push([]);
         for (let j = 0; j < Obj[i].Vtx.length; j++) {
             let tempVtx = {x: Obj[i].Vtx[j].x, y: Obj[i].Vtx[j].y, z: Obj[i].Vtx[j].z}
             for (let coord of ['x', 'y', 'z']) {
