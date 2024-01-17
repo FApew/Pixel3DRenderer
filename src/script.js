@@ -20,7 +20,7 @@ let PyrEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 4], [2, 4], [3, 4]]
 let Cube = {Vtx: CubeVtx,Edg: CubeEdg,Position: {x: 0, y: 0, z: 0}, Rotation: {x: 0, y: 0, z: 0}}
 let Pyramid = {Vtx: PyrVtx, Edg: PyrEdg, Position: {x: 0, y: 0, z: 0}, Rotation: {x: 0, y: 0, z: 0}}
 
-let Obj = [Cube]
+let Obj = [Pyramid]
 
 let VtxPrj = []
 
