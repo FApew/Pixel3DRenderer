@@ -10,7 +10,7 @@ Grid.style.gridTemplateRows = `repeat(${gridSize}, ${100 / gridSize}%)`
 Grid.style.gridTemplateColumns = `repeat(${gridSize}, ${100 / gridSize}%)`
 
 const focal = 140
-/*let CubeVtx = [{ x: 25, y: -25, z: 25 }, { x: 25, y: -25, z: -25 }, { x: -25, y: -25, z: -25 }, { x: -25, y: -25, z: 25 }, { x: 25, y: 25, z: 25 }, { x: 25, y: 25, z: -25 }, { x: -25, y: 25, z: -25 }, { x: -25, y: 25, z: 25 }]
+let CubeVtx = [{ x: 25, y: -25, z: 25 }, { x: 25, y: -25, z: -25 }, { x: -25, y: -25, z: -25 }, { x: -25, y: -25, z: 25 }, { x: 25, y: 25, z: 25 }, { x: 25, y: 25, z: -25 }, { x: -25, y: 25, z: -25 }, { x: -25, y: 25, z: 25 }]
 
 let CubeEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 5], [2, 6], [3, 7], [4, 5], [5, 6], [6, 7], [7, 4]]
 
@@ -19,17 +19,17 @@ let PyrVtx = [{ x: 15, y: -25, z: 15 }, { x: 15, y: -25, z: -15 }, { x: -15, y: 
 let PyrEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 4], [2, 4], [3, 4], [5, 6], [6, 7], [7, 8], [8, 5], [5, 4], [6, 4], [7, 4], [8, 4]]
 
 let Cube = { Vtx: CubeVtx, Edg: CubeEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z: 0 } }
-let Pyramid = { Vtx: PyrVtx, Edg: PyrEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:90 } }*/
+let Pyramid = { Vtx: PyrVtx, Edg: PyrEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:90 } }
 
-let Obj = [/*Cube, Pyramid*/]
+let Obj = [Cube, Pyramid]
 
 let VtxPrj = []
 
 setInterval(() => {
-    /*Obj[0].Rotation.y += .5
+    Obj[0].Rotation.y += .5
     Obj[1].Rotation.x += .5
     Obj[0].Rotation.z += -.5
-    Obj[1].Rotation.z += -.5*/
+    Obj[1].Rotation.z += -.5
     for (let i = 0; i < Obj.length; i++) {
         for (let j = 0; j < Obj[i].Frame.length; j++) {
             switch (Obj[i].Frame[j][0]) {
