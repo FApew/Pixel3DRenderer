@@ -21,15 +21,15 @@ let PyrEdg = [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 4], [2, 4], [3, 4], [5
 let Cube = { Vtx: CubeVtx, Edg: CubeEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z: 0 } }
 let Pyramid = { Vtx: PyrVtx, Edg: PyrEdg, Position: { x: 0, y: 0, z: 0 }, Rotation: { x: 0, y: 0, z:90 } }
 
-let Obj = [Cube, Pyramid]
+let Obj = [Cube]
 
 let VtxPrj = []
 
 setInterval(() => {
     Obj[0].Rotation.y += .5
-    Obj[1].Rotation.x += .5
+    //Obj[1].Rotation.x += .5
     Obj[0].Rotation.z += -.5
-    Obj[1].Rotation.z += -.5
+    //Obj[1].Rotation.z += -.5
     for (let i = 0; i < Obj.length; i++) {
         for (let j = 0; j < Obj[i].Frame.length; j++) {
             switch (Obj[i].Frame[j][0]) {
